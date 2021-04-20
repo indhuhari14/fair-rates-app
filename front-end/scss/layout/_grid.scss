@@ -1,0 +1,32 @@
+.container-xl{
+    max-width: 1370px;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.container-m{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.container-l{
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.container-s{
+    max-width: 630px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+.col-left{
+    width: 40%;
+    margin-right: 130px;
+}
+.col-right{
+    width: 45%;
+}

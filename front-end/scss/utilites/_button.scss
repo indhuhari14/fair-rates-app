@@ -1,0 +1,49 @@
+.button-solid{
+    padding: 14px 73px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: white;
+    background-color: $blue;
+    border-radius: 2px;
+    border: 1px solid $blue;
+    transition: all .3s;
+    &:disabled{
+        cursor: not-allowed;
+        background-color: $light-blue-gray;
+        border: 1px solid $light-blue-gray;
+    }
+    &:hover{
+        box-shadow: 7px 3px 13px 3px rgba(35,192,245,0.41);
+    }
+    &:focus{
+        outline: none;
+    }
+}
+.toggle-button{
+    padding: 14px 73px;
+    background-color: white;
+    border: 1px solid #637381;
+    color: $black;
+    font-size: 13px;
+    flex-grow: 2;
+    &-l{
+        border-radius: 3px 0 0 3px;
+    }
+    &-r{
+        border-radius: 0 3px 3px 0;
+    }
+    &:hover{
+        box-shadow: 7px 3px 13px 3px rgba(99,115,129,0.44);
+    }
+}
+.active-button{
+    background-color: #637381;
+    color: white;
+}
+.button-hold{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+}

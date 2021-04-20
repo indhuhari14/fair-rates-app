@@ -1,0 +1,1 @@
+function openTab(e,t){const n=document.getElementsByClassName("page");for(let e=0;e<n.length;e++)n[e].style.display="none";document.getElementById(t).style.display="block"}

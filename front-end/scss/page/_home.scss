@@ -1,0 +1,14 @@
+.home-page{
+    height: 60%;
+    background-color: $primary-bg;
+    display: block;
+}
+.home-wrapper{
+    padding-top: 80px;
+    .home-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }    
+}
+

@@ -1,0 +1,37 @@
+.site-head{
+    background-color: white;
+    box-shadow: 0 1px 0 0 #dfe3e8;
+    height: 64px;
+    .nav{
+        padding: 12px 0;
+        display: flex;
+        justify-content: space-between;
+        .hamburger-icon{
+            margin-right: 37px;
+        }
+        &-right{
+            display: flex;
+            align-items: center;
+        }
+        &-left{
+            display: flex;
+        }
+        &-menu-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &-menu{
+            margin-right: 40px;
+        }
+        &-link{
+            color: $blue-gray;
+            font-size: 15px;
+            font-family: 'Open Sans', sans-serif;
+        }
+    }
+}
+.logo-icon{
+    width: 186px;
+    height: 39px;
+}

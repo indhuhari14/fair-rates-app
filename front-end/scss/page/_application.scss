@@ -1,0 +1,13 @@
+.application-page{
+    padding: 79px 0 77px 0;
+    background-color: $primary-bg;
+    display: none;
+    .content-wrapper{
+        .head-1.m-b{
+            margin-bottom: 9px;
+        }
+        .desc.m-b{
+            margin-bottom: 61px;
+        }
+    }
+}
