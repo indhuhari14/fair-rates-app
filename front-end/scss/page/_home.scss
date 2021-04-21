@@ -1,7 +1,10 @@
 .home-page{
     height: 60%;
     background-color: $primary-bg;
-    display: block;
+    display: none;
+    &.active-page{
+        display: block;
+    }  
 }
 .home-wrapper{
     padding-top: 80px;
@@ -9,6 +12,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    }    
+    }  
+    
 }
-

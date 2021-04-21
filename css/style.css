@@ -25,7 +25,7 @@
   text-align: center; }
 
 .m-b {
-  margin-bottom: 20px; }
+  margin-bottom: 34px; }
 
 .m-r {
   margin-right: 30px; }
@@ -38,7 +38,8 @@
   box-shadow: 0 1px 0 0 #dfe3e8;
   height: 64px; }
   .site-head .nav {
-    padding: 12px 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
     display: flex;
     justify-content: space-between; }
     .site-head .nav .hamburger-icon {
@@ -151,7 +152,9 @@
 .home-page {
   height: 60%;
   background-color: #f9fafb;
-  display: block; }
+  display: none; }
+  .home-page.active-page {
+    display: block; }
 
 .home-wrapper {
   padding-top: 80px; }
@@ -168,6 +171,8 @@
     margin-bottom: 9px; }
   .application-page .content-wrapper .desc.m-b {
     margin-bottom: 61px; }
+  .application-page.active-page {
+    display: block; }
 
 .document-page {
   display: none;
@@ -177,6 +182,8 @@
     margin-bottom: 50px; }
   .document-page .button-hold.m-b {
     margin-bottom: 30px; }
+  .document-page.active-page {
+    display: block; }
 
 .button-solid {
   padding: 14px 73px;
@@ -192,6 +199,8 @@
     cursor: not-allowed;
     background-color: #c4cdd5;
     border: 1px solid #c4cdd5; }
+  .button-solid:disabled:hover {
+    box-shadow: unset; }
   .button-solid:hover {
     box-shadow: 7px 3px 13px 3px rgba(35, 192, 245, 0.41); }
   .button-solid:focus {
@@ -209,7 +218,7 @@
   .toggle-button-r {
     border-radius: 0 3px 3px 0; }
   .toggle-button:hover {
-    box-shadow: 7px 3px 13px 3px rgba(99, 115, 129, 0.44); }
+    box-shadow: unset; }
 
 .active-button {
   background-color: #637381;
@@ -230,10 +239,20 @@
 .input-hold-m {
   height: 43px;
   width: 238px;
+  display: flex;
+  flex-direction: column;
   box-shadow: inset 0 0 0 1px rgba(102, 113, 123, 0.25);
   position: relative; }
   .input-hold-m input[type="text"] {
     padding: 13px 17px; }
+  .input-hold-m .error-txt {
+    font-size: 10px;
+    position: absolute;
+    left: 13px;
+    bottom: -17px;
+    color: #da3737;
+    font-style: normal;
+    display: none; }
 
 .input-field {
   display: flex;
@@ -262,6 +281,13 @@ input[type="text"] {
   outline: none; }
   input[type="text"]::placeholder {
     color: #adadad; }
+  input[type="text"]:focus {
+    border-color: #4ad5f6; }
+  input[type="text"].invalid {
+    border-color: #da3737; }
+  input[type="text"]:-webkit-autofill, input[type="text"]:-webkit-autofill:hover, input[type="text"]:-webkit-autofill:focus, input[type="text"]:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important; }
 
 .button-hold {
   display: flex; }
@@ -270,12 +296,24 @@ input[type="text"] {
   width: 380px;
   height: 46px;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
   box-shadow: inset 0 0 0 1px rgba(102, 113, 123, 0.25);
   position: relative; }
   .input-hold-l input[type="text"] {
     padding: 13px 49px; }
+    .input-hold-l input[type="text"]:disabled {
+      cursor: not-allowed; }
   .input-hold-l .input-text {
     left: 49px; }
+  .input-hold-l .error-txt {
+    font-size: 10px;
+    position: absolute;
+    left: 49px;
+    bottom: -17px;
+    color: #da3737;
+    font-style: normal;
+    display: none; }
   .input-hold-l .calendar-text {
     color: #47495a;
     text-transform: uppercase;
@@ -514,14 +552,15 @@ input[type="file"] {
   .upload-container .upload-terms {
     padding: 20px 0 0 0;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
+    flex-direction: column; }
     .upload-container .upload-terms .head-3.m-b {
-      margin-bottom: 4px; }
+      margin-bottom: 12px; }
     .upload-container .upload-terms .list-wrapper {
-      margin-left: 10px; }
+      margin-left: 10px;
+      margin-bottom: 45px; }
     .upload-container .upload-terms .sub-list-wrapper {
-      padding-left: 30px; }
+      padding-left: 30px;
+      margin-top: 7px; }
       .upload-container .upload-terms .sub-list-wrapper .sub-list {
         font-size: 16px; }
     .upload-container .upload-terms .list, .upload-container .upload-terms .sub-list {
@@ -536,6 +575,8 @@ input[type="file"] {
 
 .upload-file-info {
   min-height: 80px;
+  max-height: 200px;
+  overflow-y: scroll;
   background-color: #fafafa;
   display: flex;
   flex-direction: column; }

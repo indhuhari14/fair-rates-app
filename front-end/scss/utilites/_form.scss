@@ -8,10 +8,21 @@
 .input-hold-m{
     height: 43px;
     width: 238px;
+    display: flex;
+    flex-direction: column;
     box-shadow: inset 0 0 0 1px rgba(102, 113, 123, 0.25);
     position: relative;
     input[type="text"]{
         padding: 13px 17px;
+    }
+    .error-txt{
+        font-size: 10px;
+        position: absolute;
+        left: 13px;
+        bottom: -17px;
+        color: #da3737;
+        font-style: normal;
+        display: none;
     }
 }
 .input-field{
@@ -42,6 +53,20 @@ input[type="text"]{
     &::placeholder{
         color: $gray;
     }
+    &:focus{
+        border-color: $blue;
+    }
+    &.invalid{
+        border-color: #da3737;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus, 
+    &:-webkit-autofill:active
+    {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+    }
    
 }
 
@@ -52,13 +77,27 @@ input[type="text"]{
     width: 380px;
     height: 46px;
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
     box-shadow: inset 0 0 0 1px rgba(102, 113, 123, 0.25);
     position: relative;
     input[type="text"]{
         padding: 13px 49px;
+        &:disabled{
+            cursor: not-allowed;
+        }
     }
     .input-text{
         left: 49px;
+    }
+    .error-txt{
+        font-size: 10px;
+        position: absolute;
+        left: 49px;
+        bottom: -17px;
+        color: #da3737;
+        font-style: normal;
+        display: none;
     }
     .calendar-text{
         color: $black-medium;

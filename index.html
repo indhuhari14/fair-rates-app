@@ -32,12 +32,12 @@
             </div>
             <div class="nav-left">
                 <ul class="nav-menu-wrapper">
-                    <li class="nav-menu "><a href="#home" class="nav-link" onclick="openTab(event , 'home')">Home</a>
+                    <li class="nav-menu menu"><a href="#home" class="nav-link" >Home</a>
                     </li>
-                    <li class="nav-menu"><a href="#application" class="nav-link"
-                            onclick="openTab(event, 'application')">Application</a></li>
-                    <li class="nav-menu"><a href="#document" class="nav-link"
-                            onclick="openTab(event, 'document')">Document</a></li>
+                    <li class="nav-menu menu"><a href="#application" class="nav-link">Application</a>
+                    </li>
+                    <li class="nav-menu menu"><a href="#document" class="nav-link">Document</a>
+                    </li>
                     <li class="nav-menu">
                         <a href="javascript:void(0)" class="nav-link">
                             <img src="front-end/img/notification.png">
@@ -55,14 +55,16 @@
                     <div class="fill-name">
                         <div class="input-field m-b">
                             <div class="input-hold-m m-r">
-                                <input id="first-name" name="first-name" type="text" placeholder="First name">
+                                <input id="first-name" name="first-name" type="text" placeholder="First name" invalid="false" valid="false">
+                                <i class="error-txt">Please enter your first name</i>
                             </div>
                             <div class="input-hold-m">
-                                <input id="last-name" name="last-name" type="text" placeholder="Last name">
+                                <input id="last-name" name="last-name" type="text" placeholder="Last name" invalid="false" valid="false">
+                                <i class="error-txt">Please enter your last name</i>
                             </div>
                         </div>
                         <div class="button-hold">
-                            <button class="button-solid">next</button>
+                            <button class="button-solid next">next</button>
                         </div>
                     </div>
                 </div>
@@ -82,8 +84,9 @@
                         <svg class="calendar-icon">
                             <use xlink:href="#calendar"></use>
                         </svg>
-                        <input name="calander" id="flatpickr" type="text" required>
+                        <input name="calander" id="flatpickr" disabled>
                         <div id="myCalendar" class="vanilla-calendar"></div>
+                        <i class="error-txt">Please enter your email</i>
                     </div>
                 </div>
                 <div class="col-right">
@@ -91,27 +94,30 @@
                         <svg class="location-icon">
                             <use xlink:href="#map"></use>
                         </svg>
-                        <input id="address" name="address" type="text" placeholder="Enter the exact address">
+                        <input id="address" name="address" type="text" placeholder="Enter the exact address" disabled>
+                        <i class="error-txt">Please enter your Address</i>
                     </div>
                     <div class="input-hold-l">
                         <svg class="mail-icon">
                             <use xlink:href="#mail"></use>
                         </svg>
-                        <input id="email" name="email" type="text" placeholder="Email Address">
+                        <input id="email" name="email" type="text" placeholder="Email Address" disabled>
+                        <i class="error-txt">Please enter your email</i>
                     </div>
-                    <div class="check-list-hold">
+                    <div class="check-list-hold house-type">
                         <div class="check-box-hold">
-                            <input id="condo" name="condo" type="checkbox" required>
+                            <input id="condo" name="condo" type="checkbox">
                             <label for="condo" class="check-box-txt">Condo</label>
                         </div>
                         <div class="check-box-hold">
-                            <input id="coop" name="coop" type="checkbox" required>
+                            <input id="coop" name="coop" type="checkbox">
                             <label for="coop" class="check-box-txt">Co-op</label>
                         </div>
                         <div class="check-box-hold">
-                            <input id="house" name="house" type="checkbox" required>
+                            <input id="house" name="house-type" type="checkbox">
                             <label for="house" class="check-box-txt">House</label>
                         </div>
+                        <i class="error-txt">Please select atleast 1</i>
                     </div>
                     <div class="select-hold">
                         <span class="triangle-tip"></span>
@@ -149,7 +155,7 @@
                             Select Duration
                         </div>
                     </div>
-                    <div class="check-list-hold check-box-container" id=check-box-big>
+                    <div class="check-list-hold check-box-container feature" id=check-box-big>
                         <div class="check-box-hold">
                             <label class="img-hold" for="criminal-i">
                                 <svg class="criminal-icon icon">
@@ -194,13 +200,13 @@
                             <use xlink:href="#upload"></use>
                         </svg>
                         <label class="upload-txt">Drag files here to upload or</label>
-                        <label class="upload-txt m-b"><input type="file" name="select-file" id="select-file" multiple><span class="choose-file-btn">select file</span> from your device</label>
+                        <label class="upload-txt m-b"><input type="file" name="select-file" id="select-file" accept=".png,.jpg,.jpeg,.pdf" multiple><span class="choose-file-btn">select file</span> from your device</label>
                         <p class="desc">JPG, PNG or PDF only, maximum file size - 3MB</p>   
                     </div>
                     <div class="upload-terms">
                         <h3 class="head-3 m-b">Your document must be:</h3>
                         <ul class="list-wrapper">
-                            <li class="list">A Governent issued
+                            <li class="list">A Government issued
                                 <ul class="sub-list-wrapper">
                                     <li class="sub-list">Passport</li>
                                     <li class="sub-list">Driver License</li>
@@ -233,7 +239,7 @@
                     <div class="upload-terms">
                         <h3 class="head-3 m-b">Your document must be:</h3>
                         <ul class="list-wrapper">
-                            <li class="list">A Governent issued
+                            <li class="list">A Government issued
                                 <ul class="sub-list-wrapper">
                                     <li class="sub-list">Passport</li>
                                     <li class="sub-list">Driver License</li>
@@ -251,8 +257,8 @@
                 </div>
             </div>
             <div class="button-hold">
-                <button class="button-solid">back</button>
-                <button class="button-solid" >next</button>
+                <button class="button-solid prev">back</button>
+                <button class="button-solid next">next</button>
             </div>
         </div>
     </section>
@@ -305,7 +311,6 @@
     <!-- <script src="/vendor/calender/js/vanilla-calendar-min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/min/script.js"></script>
-    <script src="/min/server.js"></script>
     <script>
         var example = flatpickr('#flatpickr');
         flatpickr('#flatpickr', {

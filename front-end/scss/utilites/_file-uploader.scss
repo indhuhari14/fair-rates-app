@@ -63,15 +63,16 @@ input[type="file"]{
         padding: 20px 0 0 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         .head-3.m-b{
-            margin-bottom: 4px;
+            margin-bottom: 12px;
         }
         .list-wrapper{
             margin-left: 10px;
+            margin-bottom: 45px;
         }
         .sub-list-wrapper{
             padding-left: 30px;
+            margin-top: 7px;
             .sub-list{
                 font-size: 16px;
             }
@@ -92,6 +93,8 @@ input[type="file"]{
 }
 .upload-file-info{
     min-height: 80px;
+    max-height: 200px;
+    overflow-y: scroll;
     background-color: #fafafa;
     display: flex;
     flex-direction: column;

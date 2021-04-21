@@ -3,7 +3,8 @@
     box-shadow: 0 1px 0 0 #dfe3e8;
     height: 64px;
     .nav{
-        padding: 12px 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
         display: flex;
         justify-content: space-between;
         .hamburger-icon{
