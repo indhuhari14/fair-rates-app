@@ -11,6 +11,15 @@ for(let i = 0;i < pageContent.length; i++){
     pageContent[i].classList.add("active-page");
     console.log(pageContent[i]);
   });
+  if(i==0){
+    homeFunctionality();
+  }
+  else if(i==1){
+    Appfunctionality();
+  }
+  else if(i==2){
+    docFunctionality();
+  }
 }
 function checkActivePage(index){
   for(let j = 0;j < pageContent.length; j++){
@@ -80,135 +89,198 @@ photoBtn.addEventListener('click', () =>{
   photoid.style.display="block";
   addProofBtn.classList.remove('active-button');
   photoBtn.classList.add('active-button');
-});
-addProofBtn.addEventListener('click', () =>{
-  addressProof.style.display="block";
-  photoid.style.display="none";
-  addProofBtn.classList.add('active-button');
-  photoBtn.classList.remove('active-button');
-});
-const uploadId = document.querySelector(".upload-id");
-var fileInput = document.getElementById("select-file");
-var fileValues = [];
-let isFilebig = false;
-let isDroped  = false;
-fileInput.addEventListener("change",showFileInfo);
-function showFileInfo(event){
-  uploadId.classList.add("upload-field-active")
-  if(isDroped == true){
-    var fileInput = event.dataTransfer;
-    isDroped = false;
-  }
-  else{
-    var fileInput = event.srcElement;
-  }
-  var fileLength = fileInput.files.length;
-  if(fileLength>10){
-    alert("You cannot upload more than 10 file");
-  }
-  else{
-    for(let i = 0;i < fileLength; i++){
-      let z=i;
-      var fileName = fileInput.files[z].name; 
-      var fileFormat = fileName.split('.').pop();
-      var fileSize = fileInput.files[z].size;
-      var button = document.createElement("button");
-      button.setAttribute("class" , "delete-btn");
-      var deleteIcon = document.createElement("img");
-      var fileIcon = document.createElement("img");
-      if(fileFormat == "png" || fileFormat == "jpg"){
-        fileIcon.setAttribute("src" , "../front-end/img/images-color.png");
-        fileIcon.setAttribute("class" , "image-icon");
-      }
-      else if(fileFormat == "pdf"){
-        fileIcon.setAttribute("src" , "../front-end/img/pdf-color.png");
-        fileIcon.setAttribute("class" , "pdf-icon");
-      }
-      deleteIcon.setAttribute("src" , "../front-end/img/delete.png");
-      deleteIcon.setAttribute("class" , "delete-icon");
-      deleteIcon = button.appendChild(deleteIcon);
-      if (fileSize >= 1073741824){ 
-      alert("File too Big, please select a file less than 3MB");
-      isFilebig = true;
-      }
-      else if (fileSize >= 1048576){ 
-      fileSize = (fileSize / 1048576).toFixed(2);
-        if(fileSize>3){
-          alert("File too Big, please select a file less than 3MB");
-          isFilebig = true;
+  });
+  
+  addProofBtn.addEventListener('click', () =>{
+    addressProof.style.display="block";
+    photoid.style.display="none";
+    addProofBtn.classList.add('active-button');
+    photoBtn.classList.remove('active-button');
+  });
+
+  const uploadId = document.querySelector(".upload-id");
+  var fileInput = document.getElementById("select-file");
+  var uploadFile = document.querySelector(".upload-file-info")
+  var fileValues = [];
+  let isFilebig = false;
+  let isDroped  = false;
+  fileInput.addEventListener("change",showFileInfo);
+  function showFileInfo(event){
+    uploadId.classList.add("upload-field-active")
+    if(isDroped == true){
+      var fileInput = event.dataTransfer;
+      isDroped = false;
+    }
+    else{
+      var fileInput = event.srcElement;
+    }
+    var fileLength = fileInput.files.length;
+    if(fileLength>10){
+      alert("You cannot upload more than 10 file");
+    }
+    else{
+      uploadFile.classList.add("overflow");
+      for(let i = 0;i < fileLength; i++){
+        let z=i;
+        var fileName = fileInput.files[z].name; 
+        var fileFormat = fileName.split('.').pop();
+        var fileSize = fileInput.files[z].size;
+        var button = document.createElement("button");
+        button.setAttribute("class" , "delete-btn");
+        var deleteIcon = document.createElement("img");
+        var fileIcon = document.createElement("img");
+        if(fileFormat == "png" || fileFormat == "jpg"){
+          fileIcon.setAttribute("src" , "../front-end/img/images-color.png");
+          fileIcon.setAttribute("class" , "image-icon");
+        }
+        else if(fileFormat == "pdf"){
+          fileIcon.setAttribute("src" , "../front-end/img/pdf-color.png");
+          fileIcon.setAttribute("class" , "pdf-icon");
+        }
+        deleteIcon.setAttribute("src" , "../front-end/img/delete.png");
+        deleteIcon.setAttribute("class" , "delete-icon");
+        deleteIcon = button.appendChild(deleteIcon);
+        if (fileSize >= 1073741824){ 
+        alert("File too Big, please select a file less than 3MB");
+        isFilebig = true;
+        }
+        else if (fileSize >= 1048576){ 
+        fileSize = (fileSize / 1048576).toFixed(2);
+          if(fileSize>3){
+            alert("File too Big, please select a file less than 3MB");
+            isFilebig = true;
+          }
+          else{
+            fileSize = fileSize + "MB";
+          } 
+        }
+        else if (fileSize >= 1024){ 
+          fileSize = (fileSize / 1024).toFixed(2) + " KB";
+        }
+        else if (fileSize > 1){ 
+          fileSize = fileSize + " bytes"; 
+        }
+        else if (fileSize == 1){ 
+          fileSize = fileSize + " byte"; 
+        }
+        if (isFilebig == false) {
+          fileValues.push([]);
+          fileValues[z][0] = fileIcon;
+          fileValues[z][1] = fileName;
+          fileValues[z][2] = fileSize;
+          fileValues[z][3] = fileFormat;
+          fileValues[z][4] = "UPLOADED";
+          fileValues[z][5] = button;	
         }
         else{
-          fileSize = fileSize + "MB";
+          isFilebig = false;
         } 
-      }
-      else if (fileSize >= 1024){ 
-        fileSize = (fileSize / 1024).toFixed(2) + " KB";
-      }
-      else if (fileSize > 1){ 
-        fileSize = fileSize + " bytes"; 
-      }
-      else if (fileSize == 1){ 
-        fileSize = fileSize + " byte"; 
-      }
-      if (isFilebig == false) {
-        fileValues.push([]);
-        fileValues[z][0] = fileIcon;
-        fileValues[z][1] = fileName;
-        fileValues[z][2] = fileSize;
-        fileValues[z][3] = fileFormat;
-        fileValues[z][4] = "UPLOADED";
-        fileValues[z][5] = button;	
-      }
-      else{
-        isFilebig = false;
+      }  
+      for(let j = 0;j < fileLength; j++){
+      var ul = document.createElement("ul");
+      ul.setAttribute("class" , "fileField");
+      for(let k=0; k < 6; k++){
+        var li = document.createElement("li");
+        if(k==0||k==5){
+          li.appendChild(fileValues[j][k]);
+        }
+        else{
+          li.appendChild(document.createTextNode(fileValues[j][k]));
+        }
+        ul.appendChild(li);
+      }	
+      uploadId.appendChild(ul);
       } 
-    }  
-    for(let j = 0;j < fileLength; j++){
-    var ul = document.createElement("ul");
-    ul.setAttribute("class" , "fileField");
-    for(let k=0; k < 6; k++){
-      var li = document.createElement("li");
-      if(k==0||k==5){
-        li.appendChild(fileValues[j][k]);
-      }
-      else{
-        li.appendChild(document.createTextNode(fileValues[j][k]));
-      }
-      ul.appendChild(li);
-    }	
-    uploadId.appendChild(ul);
-    } 
+    }
+    const deleteBtn = document.querySelectorAll(".delete-btn");
+    const fileList = document.querySelector(".upload-id").querySelectorAll("ul");
+    console.log(fileList);
+    for(let m=0;m<fileLength;m++){
+      deleteBtn[m].addEventListener('click',() => {
+        fileList[m].classList.add('delete-ul');
+        console.log("remove");
+      })
+    }
   }
-  const deleteBtn = document.querySelectorAll(".delete-btn");
-  const fileList = document.querySelector(".upload-id").querySelectorAll("ul");
-  console.log(fileList);
-  for(let m=0;m<fileLength;m++){
-    deleteBtn[m].addEventListener('click',() => {
-      fileList[m].classList.add('delete-ul');
-      console.log("remove");
-    })
+  
+  const dropArea = document.querySelector(".photo-id").querySelector(".upload-box");
+  dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("highlight");
+  });
+  ["dragleave", "dragend"].forEach((type) => {
+    dropArea.addEventListener(type, (e) => {
+      dropArea.classList.remove("highlight");
+    });
+  });
+  dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.files.length) {
+      isDroped = true;
+      showFileInfo(e);
+    }
+  });   
+  const dropAreaAdd = document.querySelector(".photo-id").querySelector(".upload-box");
+  dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("highlight");
+  });
+  ["dragleave", "dragend"].forEach((type) => {
+    dropArea.addEventListener(type, (e) => {
+      dropArea.classList.remove("highlight");
+    });
+  });
+  dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.files.length) {
+      isDroped = true;
+      showFileInfo(e);
+    }
+  });   
+
+
+function homeFunctionality(){
+  var inputTextHome = document.getElementById("home").querySelectorAll("input[type=text]");
+  var errorTextHome = document.getElementById("home").querySelectorAll(".error-txt");
+  var nextBtnHome = document.getElementById("home").querySelector(".next");
+  nextBtnHome.disabled = true;
+  let isHomeFilled = false;
+  let validCount = 0;
+  let isFocused = false;
+  for(let j=0; j<inputTextHome.length;j++){
+    inputTextHome[j].addEventListener("focus" , () => {
+       isFocused = true;
+    });
+    inputTextHome[j].addEventListener("input" , () => {
+      if(inputTextHome[j].value){
+        inputTextHome[j].classList.remove("invalid");
+        errorTextHome[j].style.display = "none";
+      }
+    });  
+    inputTextHome[j].addEventListener("blur" , () => {
+      if(inputTextHome[j].value == ""){
+        inputTextHome[j].classList.add("invalid");
+        nextBtnHome.disabled = true;
+        isHomeFilled = false;
+        errorTextHome[j].style.display = "block";
+      }
+      else if(inputTextHome[j].value){
+        validCount++;
+        if(validCount>=inputTextHome.length){
+          isHomeFilled = true;
+          nextBtnHome.disabled = false;
+          nextBtnHome.addEventListener("click" , () =>{ 
+            let currentIndex = 0;
+            pageContent[currentIndex].classList.remove("active-page");
+            pageContent[currentIndex+1].classList.add("active-page");
+          });
+        }
+      } 
+    });
+    return isHomeFilled;
   }
 }
-
-const dropArea = document.querySelector(".photo-id").querySelector(".upload-box");
-dropArea.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  dropArea.classList.add("highlight");
-});
-["dragleave", "dragend"].forEach((type) => {
-  dropArea.addEventListener(type, (e) => {
-    dropArea.classList.remove("highlight");
-  });
-});
-dropArea.addEventListener("drop", (e) => {
-  e.preventDefault();
-  if (e.dataTransfer.files.length) {
-    isDroped = true;
-    showFileInfo(e);
-  }
-}); 
-
-function FindActivepage(){
+function findActivepage(){
   for(let i = 0; i < pageContent.length; i++){
     let isActivePage = false;
     isActivePage = pageContent[i].classList.contains("active-page");
@@ -217,82 +289,14 @@ function FindActivepage(){
     }
   }
 }
-function UpadtenextPage(){
-    return document.querySelector(".active-page").querySelector(".next");
-}
-
-const nextBtn = document.querySelectorAll(".next");
-const prevBtn = document.querySelectorAll(".prev");
-for(let j = 0;j < nextBtn.length; j++){
-  let x=j;
-  nextBtn[x].addEventListener("click" , () =>{ 
-    let currentIndex = FindActivepage();
-    pageContent[currentIndex].classList.remove("active-page");
-    pageContent[currentIndex+1].classList.add("active-page");
-    validateApp();
-  });
-}
-for(let k = 0;k < prevBtn.length; k++){
-  let x=k;
-  prevBtn[x].addEventListener("click" , () =>{ 
-    let currentIndex = FindActivepage();
-    pageContent[currentIndex].classList.remove("active-page");
-    pageContent[currentIndex-1].classList.add("active-page");
-  });
-}
-
-var inputTextHome = document.getElementById("home").querySelectorAll("input[type=text]");
-var errorTextHome = document.getElementById("home").querySelectorAll(".error-txt");
-var nextBtnHome = document.getElementById("home").querySelector(".next");
-console.log(nextBtnHome);
-let isFocused = false;
-let isHomeFilled = false;
-let validCount = 0;
-nextBtnHome.disabled = true;
-for(let j=0; j<inputTextHome.length;j++){
-  inputTextHome[j].addEventListener("focus" , () => {
-     isFocused = true;
-  });
-  inputTextHome[j].addEventListener("input" , () => {
-    if(inputTextHome[j].value){
-      inputTextHome[j].classList.remove("invalid");
-      errorTextHome[j].style.display = "none";
-    }
-  });  
-  inputTextHome[j].addEventListener("blur" , () => {
-    console.log(inputTextHome[j].value);
-    if(inputTextHome[j].value == ""){
-      validCount--;
-      inputTextHome[j].classList.add("invalid");
-      nextBtnHome.disabled = true;
-      isHomeFilled = false;
-      errorTextHome[j].style.display = "block";
-      console.log("invalid");
-    }
-    else if(inputTextHome[j].value){
-      validCount++;
-      console.log("v"+validCount);
-      if(validCount==inputTextHome.length){
-        isHomeFilled = true;
-        nextBtnHome.disabled = false;
-        validCount=0;
-      }
-    } 
-  });
-}
-
-
-function validateApp(){
-  var inputTextApp = document.getElementById("application").querySelectorAll("input[type=text]");
+function Appfunctionality() {
+  var inputTextApp = document.querySelector(".col-right").querySelectorAll("input[type=text]");
   var errorTextApp = document.getElementById("application").querySelectorAll(".error-txt");
   var nextBtnApp = document.getElementById("application").querySelector(".next");
-  var checkBoxS = document.querySelector(".house-type").querySelectorAll("input[type=checkbox]");
-  var checkBoxL = document.querySelector(".feature").querySelectorAll("input[type=checkbox]");
-  console.log("N"+nextBtnApp);
-  console.log("I"+inputTextApp[0]);
-  console.log(checkBoxS);
-  let isAppFilled = false;
+  var prevBtnApp = document.getElementById("application").querySelector(".prev");
   nextBtnApp.disabled = true;
+  let validCount = 0;
+  let isFocused = false;
   for(let k=0;k<inputTextApp.length;k++){
     inputTextApp[k].disabled = false;
     inputTextApp[k].addEventListener("focus" , () => {
@@ -305,40 +309,143 @@ function validateApp(){
       }
     });  
     inputTextApp[k].addEventListener("blur" , () => {
-      console.log(inputTextApp[k].value);
-      console.log(k);
       if(inputTextApp[k].value == ""){
         validCount--;
         inputTextApp[k].classList.add("invalid");
         nextBtnApp.disabled = true;
         isAppFilled = false;
         errorTextApp[k].style.display = "block";
-        console.log("invalid");
       }
       else if(inputTextApp[k].value){
         validCount++;
-        console.log("v"+validCount);
-        if(validCount==inputTextApp.length){
+        if(validCount>=inputTextApp.length){
           isAppFilled = true;
           nextBtnApp.disabled = false;
         }
       } 
     });
-  } 
-  for(let i=0;i<checkBoxS.length;i++){
-    if(checkBoxS[i].onchange){
-      console.log("checked");
+  }  
+  nextBtnApp.addEventListener("click" , () =>{ 
+    let currentIndex = 1;
+    let validateS = validateCheckBoxS();
+    let validateL = validateCheckBoxL();
+    let validateDate = validateDob();
+    let validateList = validateOptions(); 
+    console.log("DOB CHANGED"+validateDate);
+    if(validateS == true && validateL == true && validateDate == true && validateList == true){
+      pageContent[currentIndex].classList.remove("active-page");
+      pageContent[currentIndex+1].classList.add("active-page");
+    }
+  });
+  prevBtnApp.addEventListener("click" ,() =>{
+    let currentIndex = 1;
+    pageContent[currentIndex].classList.remove("active-page");
+    pageContent[currentIndex-1].classList.add("active-page");
+  });
+  
+}
+function docFunctionality() {
+  var nextBtnDoc = document.getElementById("document").querySelector(".next");
+  var prevBtnDoc = document.getElementById("document").querySelector(".prev");
+  nextBtnDoc.addEventListener("click" , () =>{ 
+    let currentIndex = 2;
+    pageContent[currentIndex].classList.remove("active-page");
+    pageContent[currentIndex+1].classList.add("active-page");
+  });
+  prevBtnDoc.addEventListener("click" ,() =>{
+    let currentIndex = 2;
+    pageContent[currentIndex].classList.remove("active-page");
+    pageContent[currentIndex-1].classList.add("active-page");
+  });
+}  
+  
+  function validateCheckBoxS(){
+    var checkBoxS = document.querySelector(".house-type").querySelectorAll("input[type=checkbox]");
+    var errortxtS = document.querySelector(".house-type").querySelector(".error-txt");
+    let isCheckedS = false;
+    for(let x = 0;x < checkBoxS.length;x++){
+      if(checkBoxS[x].checked){
+        isCheckedS = true;
+        errortxtS.style.display = "none";
+        return isCheckedS;
+      }
+      else{
+        isCheckedS = false;
+        errortxtS.style.display = "block";
+      }
+      checkBoxS.forEach(e => {
+        e.addEventListener("change", () => {
+          errortxtS.style.display = "none";
+        });  
+      }); 
+    }
+}
+function validateCheckBoxL(){
+  var checkBoxL = document.querySelector(".feature").querySelectorAll("input[type=checkbox]");
+  var errortxtL = document.querySelector(".feature").querySelector(".error-txt");
+  let isCheckedL = false;
+  for(let y = 0;y < checkBoxL.length;y++){
+    if(checkBoxL[y].checked){
+      isCheckedL = true;
+      errortxtL.style.display = "none";
+      return isCheckedL;
     }
     else{
-      console.log("not checked");
+      isCheckedL = false;
+      errortxtL.style.display = "block";
     }
+    checkBoxL.forEach(e => {
+      e.addEventListener("change", () => {
+        errortxtL.style.display = "none";
+      });  
+    });    
+  }    
+}
+function validateDob() {
+  var dateOfBirth = document.querySelector(".col-left").querySelector("input[type=text]");
+  var today = new Date();
+  let month = String(today.getMonth()+ 1).padStart(2, '0');
+  let myDate = (today.getUTCDate()) + " / " + month + " / " + (today.getUTCFullYear());
+  var errorDob = document.querySelector(".col-left").querySelector(".error-txt");
+  let isDobChanged = false;
+  console.log(myDate);
+  dateOfBirth.addEventListener("change", () =>{
+    console.log("DB3"+dateOfBirth.value);
+    errorDob.style.display = "none";
+    isDobChanged = true;
+    console.log(isDobChanged);
+    return isDobChanged;
+  });
+  if(dateOfBirth.value == myDate){
+    console.log("Same");
+    isDobChanged = false;
+    errorDob.style.display = "block";
+    return isDobChanged;
+  }
+  if(dateOfBirth.value != myDate){
+    isDobChanged = true;
+    return isDobChanged;
   }
 }
-  
-  
- 
-
-
-
-  
-
+function validateOptions() {
+  var options = document.querySelector(".application-page").querySelector(".selected");
+  var option = document.querySelector(".select-hold");
+  var errorOptions = document.querySelector(".select-hold").querySelector(".error-txt");
+  let isSelected = false;
+  option.addEventListener("change", () => {
+    errorOptions.style.display = "none";
+    console.log("Its changing");
+    return isSelected;
+  }); 
+  console.log(options.innerText);
+  if(options.innerText == "Select Duration"){
+    errorOptions.style.display = "block";
+    return isSelected;
+  }
+  else{
+    errorOptions.style.display = "none";
+    isSelected = true;
+    return isSelected;
+  }
+   
+}

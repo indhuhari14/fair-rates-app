@@ -84,9 +84,9 @@
                         <svg class="calendar-icon">
                             <use xlink:href="#calendar"></use>
                         </svg>
-                        <input name="calander" id="flatpickr" disabled>
+                        <input name="calender" id="flatpickr" type="text"> 
                         <div id="myCalendar" class="vanilla-calendar"></div>
-                        <i class="error-txt">Please enter your email</i>
+                        <i class="error-txt">Please enter valid date of birth</i>
                     </div>
                 </div>
                 <div class="col-right">
@@ -94,14 +94,14 @@
                         <svg class="location-icon">
                             <use xlink:href="#map"></use>
                         </svg>
-                        <input id="address" name="address" type="text" placeholder="Enter the exact address" disabled>
+                        <input id="address" name="address" type="text" placeholder="Enter the exact address">
                         <i class="error-txt">Please enter your Address</i>
                     </div>
                     <div class="input-hold-l">
                         <svg class="mail-icon">
                             <use xlink:href="#mail"></use>
                         </svg>
-                        <input id="email" name="email" type="text" placeholder="Email Address" disabled>
+                        <input id="email" name="email" type="text" placeholder="Email Address">
                         <i class="error-txt">Please enter your email</i>
                     </div>
                     <div class="check-list-hold house-type">
@@ -154,6 +154,7 @@
                         <div class="selected">
                             Select Duration
                         </div>
+                        <i class="error-txt">Please select anyone</i>
                     </div>
                     <div class="check-list-hold check-box-container feature" id=check-box-big>
                         <div class="check-box-hold">
@@ -174,6 +175,7 @@
                             <input id="fire-i" name="fire" type="checkbox">
                             <label for="fire-i" class="check-box-txt">Burglar Alarm</label>
                         </div>
+                        <i class="error-txt">Please select atleast 1</i>
                     </div>
                     <div class="button-hold">
                         <button class="button-solid prev">back</button>
@@ -233,7 +235,7 @@
                             <use xlink:href="#upload"></use>
                         </svg>
                         <label class="upload-txt">Drag files here to upload or</label>
-                        <label class="upload-txt m-b"><input type="file" name="select-file" id="select-file" multiple><span class="choose-file-btn">select file</span> from your device</label>
+                        <label class="upload-txt m-b"><input type="file" name="select-file" id="select-file-add" accept=".png,.jpg,.jpeg,.pdf" multiple><span class="choose-file-btn">select file</span> from your device</label>
                         <p class="desc">JPG, PNG or PDF only, maximum file size - 3MB</p>   
                     </div>
                     <div class="upload-terms">

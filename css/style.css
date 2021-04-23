@@ -309,7 +309,7 @@ input[type="text"] {
   .input-hold-l .error-txt {
     font-size: 10px;
     position: absolute;
-    left: 49px;
+    left: 15px;
     bottom: -17px;
     color: #da3737;
     font-style: normal;
@@ -324,7 +324,16 @@ input[type="text"] {
 .check-list-hold {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  position: relative; }
+  .check-list-hold .error-txt {
+    font-size: 10px;
+    position: absolute;
+    left: 15px;
+    bottom: -5px;
+    color: #da3737;
+    font-style: normal;
+    display: none; }
   .check-list-hold .check-box-hold {
     width: 380px;
     height: 46px;
@@ -371,6 +380,14 @@ input[type="text"] {
   margin-bottom: 40px;
   border-radius: 3px;
   position: relative; }
+  .select-hold .error-txt {
+    font-size: 10px;
+    position: absolute;
+    left: 15px;
+    bottom: -5px;
+    color: #da3737;
+    font-style: normal;
+    display: none; }
   .select-hold .option-container {
     position: absolute;
     bottom: -208px;
@@ -576,10 +593,11 @@ input[type="file"] {
 .upload-file-info {
   min-height: 80px;
   max-height: 200px;
-  overflow-y: scroll;
   background-color: #fafafa;
   display: flex;
   flex-direction: column; }
+  .upload-file-info.overflow {
+    overflow-y: scroll; }
   .upload-file-info .upload-id {
     padding: 0 20px 15px 20px;
     background-color: white;

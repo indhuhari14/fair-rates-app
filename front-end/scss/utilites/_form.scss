@@ -93,7 +93,7 @@ input[type="text"]{
     .error-txt{
         font-size: 10px;
         position: absolute;
-        left: 49px;
+        left: 15px;
         bottom: -17px;
         color: #da3737;
         font-style: normal;
@@ -111,6 +111,16 @@ input[type="text"]{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    position: relative;
+    .error-txt{
+        font-size: 10px;
+        position: absolute;
+        left: 15px;
+        bottom: -5px;
+        color: #da3737;
+        font-style: normal;
+        display: none;
+    }
     .check-box-hold{
         width: 380px;
         height: 46px;
@@ -168,6 +178,15 @@ input[type="text"]{
     margin-bottom: 40px;
     border-radius: 3px;
     position: relative;
+    .error-txt{
+        font-size: 10px;
+        position: absolute;
+        left: 15px;
+        bottom: -5px;
+        color: #da3737;
+        font-style: normal;
+        display: none;
+    }
     .option-container{
         position: absolute;
         bottom: -208px;

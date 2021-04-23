@@ -94,10 +94,12 @@ input[type="file"]{
 .upload-file-info{
     min-height: 80px;
     max-height: 200px;
-    overflow-y: scroll;
     background-color: #fafafa;
     display: flex;
     flex-direction: column;
+    &.overflow{
+        overflow-y: scroll;
+    }
     .upload-id{
         padding: 0 20px 15px 20px;
         background-color: white;
