@@ -32,6 +32,14 @@
         }
     }
 }
+.notification-button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}
 .logo-icon{
     width: 186px;
     height: 39px;

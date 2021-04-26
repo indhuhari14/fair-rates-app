@@ -1,0 +1,21 @@
+.progress-page{
+    padding-bottom: 147px;
+    display: none;
+    &.active-page{
+        display: block;
+    }
+    .progress-percent-wrappper{
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+        padding: 27px 0;
+        background-color: white;
+    }  
+    .progress-percent{
+        display: flex;
+        justify-content: space-between;
+    }
+    .header-txt{
+        .desc{
+            font-size: 18px;
+        }
+    }
+}

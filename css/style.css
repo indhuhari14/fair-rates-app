@@ -60,6 +60,13 @@
       font-size: 15px;
       font-family: 'Open Sans', sans-serif; }
 
+.notification-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none; }
+  .notification-button:focus {
+    outline: none; }
+
 .logo-icon {
   width: 186px;
   height: 39px; }
@@ -184,6 +191,21 @@
     margin-bottom: 30px; }
   .document-page.active-page {
     display: block; }
+
+.progress-page {
+  padding-bottom: 147px;
+  display: none; }
+  .progress-page.active-page {
+    display: block; }
+  .progress-page .progress-percent-wrappper {
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+    padding: 27px 0;
+    background-color: white; }
+  .progress-page .progress-percent {
+    display: flex;
+    justify-content: space-between; }
+  .progress-page .header-txt .desc {
+    font-size: 18px; }
 
 .button-solid {
   padding: 14px 73px;

@@ -98,33 +98,34 @@ photoBtn.addEventListener('click', () =>{
     photoBtn.classList.remove('active-button');
   });
 
-  const uploadId = document.querySelector(".upload-id");
-  var fileInput = document.getElementById("select-file");
-  var uploadFile = document.querySelector(".upload-file-info")
+  const uploadId = document.querySelectorAll(".upload-id");
+  var fileInput = document.querySelectorAll("input[type=file]");
+  var uploadFile = document.querySelectorAll(".upload-file-info")
+for(let e = 0; e < uploadId.length; e++){
   var fileValues = [];
   let isFilebig = false;
   let isDroped  = false;
-  fileInput.addEventListener("change",showFileInfo);
+  fileInput[e].addEventListener("change",showFileInfo);
   function showFileInfo(event){
-    uploadId.classList.add("upload-field-active")
+    uploadId[e].classList.add("upload-field-active")
     if(isDroped == true){
-      var fileInput = event.dataTransfer;
+      fileInput[e] = event.dataTransfer;
       isDroped = false;
     }
     else{
-      var fileInput = event.srcElement;
+      fileInput[e] = event.srcElement;
     }
-    var fileLength = fileInput.files.length;
+    var fileLength = fileInput[e].files.length;
     if(fileLength>10){
       alert("You cannot upload more than 10 file");
     }
     else{
-      uploadFile.classList.add("overflow");
+      uploadFile[e].classList.add("overflow");
       for(let i = 0;i < fileLength; i++){
         let z=i;
-        var fileName = fileInput.files[z].name; 
+        var fileName = fileInput[e].files[z].name; 
         var fileFormat = fileName.split('.').pop();
-        var fileSize = fileInput.files[z].size;
+        var fileSize = fileInput[e].files[z].size;
         var button = document.createElement("button");
         button.setAttribute("class" , "delete-btn");
         var deleteIcon = document.createElement("img");
@@ -189,19 +190,30 @@ photoBtn.addEventListener('click', () =>{
         }
         ul.appendChild(li);
       }	
-      uploadId.appendChild(ul);
+      uploadId[e].appendChild(ul);
       } 
     }
-    const deleteBtn = document.querySelectorAll(".delete-btn");
-    const fileList = document.querySelector(".upload-id").querySelectorAll("ul");
-    console.log(fileList);
+    const deleteBtn = document.querySelector(".photo-id").querySelector(".upload-id").querySelectorAll(".delete-btn");
+    const deleteBtnId = document.querySelector(".address-proof").querySelector(".upload-id").querySelectorAll(".delete-btn");
+    const fileListId = document.querySelector(".upload-id").querySelectorAll("ul");
+    const fileListAdd = document.querySelector(".address-proof").querySelector(".upload-id").querySelectorAll("ul");
+    console.log("fileListAdd"+fileListAdd);
+    console.log("fileListId"+fileListId);
     for(let m=0;m<fileLength;m++){
       deleteBtn[m].addEventListener('click',() => {
-        fileList[m].classList.add('delete-ul');
+        fileListId[m].classList.add('delete-ul');
+        console.log(fileLength);
+      });
+    }
+    for(let n=0;n<fileLength;n++){
+      deleteBtnId[n].addEventListener('click',() => {
+        fileListAdd[n].classList.add('delete-ul');
         console.log("remove");
-      })
+      });
     }
   }
+}
+  
   
   const dropArea = document.querySelector(".photo-id").querySelector(".upload-box");
   dropArea.addEventListener("dragover", (e) => {
@@ -217,6 +229,7 @@ photoBtn.addEventListener('click', () =>{
     e.preventDefault();
     if (e.dataTransfer.files.length) {
       isDroped = true;
+      console.log("FILE DROPPED!!")
       showFileInfo(e);
     }
   });   
@@ -448,4 +461,7 @@ function validateOptions() {
     return isSelected;
   }
    
+}
+function progressfunctionality() {
+
 }
